@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CKEditor</title>
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.CKEDITOR) {
+            CKEDITOR.replace('editor');
+        } else {
+            console.error('CKEditor is not available.');
+        }
+    });
+
+    function getCKEditorContent() {
+        try {
+            var editor = CKEDITOR.instances.editor;
+            if (editor) {
+                return editor.getData();
+            } else {
+                console.error('CKEditor instance is not available.');
+                return null;
+            }
+        } catch (e) {
+            console.error('Error fetching CKEditor content:', e.message);
+            return null;
+        }
+    }
+    </script>
+</head>
+<body>
+    <textarea id="editor"></textarea>
+</body>
+</html>
